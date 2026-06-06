@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | BCA Student & Tech Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #a78bfa;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(167, 139, 250, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(167, 139, 250, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(167, 139, 250, 0.9); }
+        }
+
+        .hero-badge {
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.4);
+            color: #a78bfa;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 650px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #a78bfa;
+            padding: 14px 35px;
+            border: 2px solid #a78bfa;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(167, 139, 250, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 80px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 50px;
+            font-size: 0.95rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            line-height: 1.9;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .about-card span {
+            color: #a78bfa;
+            font-weight: 600;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: default;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #a78bfa;
+            background: rgba(167, 139, 250, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .skill-level {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #a78bfa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateX(8px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .exp-badge {
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .exp-org {
+            color: #a78bfa;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .exp-desc {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ===== CERTIFICATIONS SECTION ===== */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cert-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            color: #a78bfa;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-item:hover {
+            border-color: #a78bfa;
+            background: rgba(167, 139, 250, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .contact-text p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #a78bfa;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .form-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: #a78bfa;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.4);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <div class="logo">🚀 Arya.dev</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <div class="hero">
+        <div class="avatar">👨‍💻</div>
+        <div class="hero-badge">🎓 BCA 3rd Year Student</div>
+        <h1>Data • Code • Impact</h1>
+        <p>
+            Passionate about technology, data, and continuous learning.
+            Turning raw data into meaningful insights and transforming
+            ideas into real-world solutions through programming.
+        </p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">📬 Get In Touch</a>
+            <a href="#skills" class="btn-secondary">🔍 View Skills</a>
+        </div>
+    </div>
+
+    <!-- ===== STATS SECTION ===== -->
+    <section>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Technologies Learned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">IIT Certifications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Industry Internship</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3rd</div>
+                <div class="stat-label">Year of BCA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Who I am and what drives me</p>
+        <div class="about-card">
+            <p>
+                I am a <span>BCA 3rd-year student</span> passionate about 
+                <span>technology, data, and continuous learning</span>. 
+                I enjoy solving problems through programming and data analysis, 
+                and I'm always exploring emerging technologies to stay ahead.
+            </p>
+            <br>
+            <p>
+                My academic journey is complemented by <span>online certifications 
+                from IIT Bombay</span> and hands-on industry exposure as an 
+                <span>intern at IIT Palakkad</span>. I actively build practical 
+                skills and share my learning journey through 
+                <span>LinkedIn</span>, where I've developed a growing 
+                professional network.
+            </p>
+            <br>
+            <p>
+                My goal is to leverage <span>data-driven thinking</span> and 
+                <span>programming expertise</span> to create meaningful impact 
+                in real-world projects. Currently seeking opportunities in 
+                <span>Data Analytics</span>, <span>Software Development</span>, 
+                and <span>Programming</span> roles.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Technologies I work with</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🗄️</div>
+                <div class="skill-name">SQL</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <div class="skill-name">Excel</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name">HTML</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📈</div>
+                <div class="skill-name">Data Analysis</div>
+                <div class="skill-level">Learning</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💡</div>
+                <div class="skill-name">Problem Solving</div>
+                <div class="skill-level">Strong</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">My professional journey so far</p>
+
+        <div class="experience-card">
+            <div class="exp-header">
+                <div class="exp-title">Technology Intern</div>
+                <div class="exp-badge">Internship</div>
+            </div>
+            <div class="exp-org">🏛️ IIT Palakkad</div>
+            <div class="exp-desc">
+                Gained hands-on industry exposure working on real-world 
+                technology projects. Developed practical skills in programming 
+                and data handling while collaborating with experienced 
+                professionals in a prestigious research environment.
+            </div>
+        </div>
+
+        <div class="experience-card">
+            <div class="exp-header">
+                <div class="exp-title">LinkedIn Content Creator & Networker</div>
+                <div class="exp-badge">Ongoing</div>
+            </div>
+            <div class="exp-org">💼 LinkedIn — Arya-code-dev</div>
+            <div class="exp-desc">
+                Actively sharing my learning journey, insights on technology 
+                and data, and building a growing professional network. 
+                Engaging with industry professionals and staying updated 
+                with the latest tech trends.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS SECTION ===== -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">My verified learning achievements</p>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-title">Data Science & Programming Certification</div>
+                <div class="cert-issuer">🏛️ IIT Bombay</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">📜</div>
+                <div class="cert-title">Python for Data Analytics</div>
+                <div class="cert-issuer">🏛️ IIT Bombay</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🎖️</div>
+                <div class="cert-title">Industry Exposure Program</div>
+                <div class="cert-issuer">🏛️ IIT Palakkad</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-subtitle">Let's connect and create something amazing</p>
+
+        <div class="contact-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3 style="color: #e2e8f0; margin-bottom: 10px;">
+                    Get In Touch 👋
+                </h3>
+                <p style="color: #94a3b8; margin-bottom: 20px; line-height: 1.7;">
+                    I'm currently open to opportunities in 
+                    Data Analytics, Software Development, and Programming. 
+                    Feel free to reach out!
+                </p>
+
+                <a href="tel:123984" class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>123984</p>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/in/Arya-code-dev" 
+                   target="_blank" 
+                   class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-text">
+                        <h4>LinkedIn</h4>
+                        <p>Arya-code-dev</p>
+                    </div>
+                </a>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🎓</div>
+                    <div class="contact-text">
+                        <h4>Education</h4>
+                        <p>BCA — 3rd Year</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <h4>Open To</h4>
+                        <p>Data Analytics · Dev · Programming</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3 style="color: #e2e8f0; margin-bottom: 25px;">
+                    Send a Message ✉️
+                </h3>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" />
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="What's this about?" />
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Write your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        🚀 Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>
+            Designed & Built with <span>❤️</span> by 
+            <span>Arya-code-dev</span> · 
+            BCA Student | Data Enthusiast | Developer
+        </p>
+        <p style="margin-top: 8px;">
+            © 2024 All rights reserved · 
+            <span>🚀 Turning data into insights</span>
+        </p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <a href="#" class="scroll-top">↑</a>
+
+</body>
+  </html>
